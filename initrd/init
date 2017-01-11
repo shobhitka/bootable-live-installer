@@ -112,6 +112,12 @@ goto_shell()
 		sh 2>&1
 }
 
+if [ -n "$LIVE" ]; then
+	echo -n "At times USB is not detected properly. "
+	echo "Ensure that USB is detected and type 'exit' to proceed"
+	goto_shell "USB_WA"
+fi
+
 mount -t tmpfs tmpfs /newroot
 cd /newroot
 found=0
